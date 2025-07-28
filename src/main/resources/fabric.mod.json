@@ -1,0 +1,44 @@
+{
+	"schemaVersion": 1,
+	"id": "lifesteal_mod_fabric",
+	"version": "${version}",
+	"name": "LifeSteal Mod Fabric",
+	"description": "My personal take on the LifeSteal mods.",
+	"authors": [
+		"Nightkiwi"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/lifesteal_mod_fabric/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"lifesteal_mod_fabric_package.LifeStealModFabric"
+		],
+		"client": [
+			"lifesteal_mod_fabric_package.LifeStealModFabricClient"
+		],
+		"fabric-datagen": [
+			"lifesteal_mod_fabric_package.LifeStealModFabricDataGenerator"
+		]
+	},
+	"mixins": [
+		"lifesteal_mod_fabric.mixins.json",
+		{
+			"config": "lifesteal_mod_fabric.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21.5",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
