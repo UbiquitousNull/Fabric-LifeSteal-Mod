@@ -1,5 +1,7 @@
 package lifesteal_mod_fabric_package;
 
+import lifesteal_mod_fabric_package.command.SetMaxHealth;
+import lifesteal_mod_fabric_package.event.PlayerDeathHandler;
 import lifesteal_mod_fabric_package.item.LifeStealModItems;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -20,6 +22,9 @@ public class LifeStealModFabric implements ModInitializer {
 		// Proceed with mild caution.
 
 		// LOGGER.info("Hello Fabric world!");
-		LifeStealModItems.registerModBaseItems();
+//		LifeStealModItems.registerLifeStealModItems();
+		LifeStealModItems.initializeItems();
+		PlayerDeathHandler.register();
+		SetMaxHealth.register();
 	}
 }
