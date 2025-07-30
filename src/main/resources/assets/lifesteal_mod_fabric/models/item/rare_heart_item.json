@@ -1,0 +1,6 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "lifesteal_mod_fabric:item/rare_heart_item"
+	}
+}

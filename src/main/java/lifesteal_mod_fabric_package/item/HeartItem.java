@@ -12,20 +12,30 @@ import net.minecraft.world.World;
 import static lifesteal_mod_fabric_package.util.HealthUtils.applyHeartModifier;
 
 public class HeartItem extends Item {
-	public HeartItem(Settings settings) { super(settings); }
+	private final int health;
+
+	public HeartItem(Settings settings, int health) {
+		super(settings);
+		this.health = health;
+	}
 
 	@Override
 	public ActionResult use(World world, PlayerEntity user, Hand hand) {
 		if (!world.isClient) {
-			ServerWorld serverWorld = (ServerWorld) world;
-			serverWorld.spawnParticles(ParticleTypes.TOTEM_OF_UNDYING, user.getX(), user.getY() +1.0D, user.getZ(), 20, 0.5D, 0.5D, 0.5D, 0.0D);
-		}else {
-			world.addParticleClient(ParticleTypes.TOTEM_OF_UNDYING, user.getX(), user.getY() + 1.0D, user.getZ(), 0.0D, 0.0D, 0.0D);
+			((ServerWorld) world).spawnParticles(
+					ParticleTypes.TOTEM_OF_UNDYING,
+					user.getX(), user.getY() + 1.0D, user.getZ(),
+					20, .5, .5, .5, 0);
+		} else {
+			world.addParticleClient(
+					ParticleTypes.TOTEM_OF_UNDYING,
+					user.getX(), user.getY() + 1.0D, user.getZ(),
+					0, 0, 0);
 		}
-		user.getStackInHand(hand).decrement(1);
-		applyHeartModifier(user, 1);
-		user.playSound(SoundEvents.ITEM_TOTEM_USE, 1.0F, 1.0F);
 
-		return  ActionResult.SUCCESS;
+		user.getStackInHand(hand).decrement(1);
+		applyHeartModifier(user, health);
+		user.playSound(SoundEvents.ITEM_TOTEM_USE, 1F, 1F);
+		return ActionResult.SUCCESS;
 	}
 }

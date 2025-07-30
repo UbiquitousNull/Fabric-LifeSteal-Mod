@@ -1,0 +1,13 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		"lifesteal_mod_fabric:uncommon_heart_item",
+		"lifesteal_mod_fabric:uncommon_heart_item",
+		"lifesteal_mod_fabric:common_heart_item"
+	],
+	"result": {
+		"count": 1,
+		"id": "lifesteal_mod_fabric:rare_heart_item"
+
+	}
+}

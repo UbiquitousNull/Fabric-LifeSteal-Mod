@@ -15,36 +15,34 @@ import static net.minecraft.command.argument.EntityArgumentType.player;
 
 public class SetMaxHealth {
 	public static void register() {
-		// note: use .EVENT.register, not EVENT(...):
 		CommandRegistrationCallback.EVENT.register(
 				(CommandDispatcher<ServerCommandSource> dispatcher,
 				 CommandRegistryAccess registryAccess,
 				 CommandManager.RegistrationEnvironment env) -> dispatcher.register(
-						 CommandManager.literal("setmaxhearts")
-								 .requires(src -> src.hasPermissionLevel(2))
-								 .then(CommandManager.argument("player", player())
-										 .then(CommandManager.argument("hearts", IntegerArgumentType.integer(1))
-												 .executes(ctx -> {
-													 try {
-														 ServerPlayerEntity target = getPlayer(ctx, "player");
-														 int hearts = IntegerArgumentType.getInteger(ctx, "hearts");
-														 HealthUtils.setMaxHearts(target, hearts);
-														 ctx.getSource().sendFeedback(
-																 () -> Text.literal("Set max hearts of ")
-																		 .append(target.getDisplayName())
-																		 .append(Text.literal(" to " + hearts)),
-																 true
-														 );
-														 return 1;
-													 } catch (Exception e) {
-														 ctx.getSource().sendError(Text.literal("§cError: " + e.getMessage()));
-														 e.printStackTrace();  // this will show up in your server/IDE log
-														 return 0;
-													 }
-												 })
-										 )
-								 )
-				 )
+						CommandManager.literal("setmaxhealth")
+								.requires(src -> src.hasPermissionLevel(2))
+								.then(CommandManager.argument("player", player())
+										.then(CommandManager.argument("health", IntegerArgumentType.integer(1))
+												.executes(ctx -> {
+													try {
+														ServerPlayerEntity target = getPlayer(ctx, "player");
+														int health = IntegerArgumentType.getInteger(ctx, "health");
+														HealthUtils.setMaxHealth(target, health);
+														ctx.getSource().sendFeedback(
+																() -> Text.literal("Set max health of ")
+																		.append(target.getDisplayName())
+																		.append(Text.literal(" to " + health)),
+																true
+														);
+														return 1;
+													} catch (Exception e) {
+														ctx.getSource().sendError(Text.literal("§cError: " + e.getMessage()));
+														return 0;
+													}
+												})
+										)
+								)
+				)
 		);
 	}
 }

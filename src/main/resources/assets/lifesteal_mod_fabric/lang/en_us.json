@@ -1,3 +1,7 @@
 {
-  "item.lifesteal_mod_fabric.heart_item": "Heart"
+  "item.lifesteal_mod_fabric.common_heart_item": "Common Heart",
+  "item.lifesteal_mod_fabric.uncommon_heart_item": "Uncommon Heart",
+  "item.lifesteal_mod_fabric.rare_heart_item": "Rare Heart",
+  "item.lifesteal_mod_fabric.epic_heart_item": "Epic Heart",
+  "item.lifesteal_mod_fabric.legendary_heart_item": "Legendary Heart"
 }

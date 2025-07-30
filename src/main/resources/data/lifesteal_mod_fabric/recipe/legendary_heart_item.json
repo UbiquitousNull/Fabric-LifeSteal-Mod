@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		"lifesteal_mod_fabric:epic_heart_item",
+		"lifesteal_mod_fabric:epic_heart_item"
+	],
+	"result": {
+		"count": 1,
+		"id": "lifesteal_mod_fabric:legendary_heart_item"
+	}
+}
